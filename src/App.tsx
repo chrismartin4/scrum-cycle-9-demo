@@ -3,6 +3,9 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import AllPublishedEvents from './pages/allPublishedEvents';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,6 +25,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+// import AllPublishedEvents from './pages/allPublishedEvents';
 
 setupIonicReact();
 
@@ -32,11 +36,23 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
+            {/* <Route path="/" exact={true}>
               <Redirect to="/page/Inbox" />
             </Route>
             <Route path="/page/:name" exact={true}>
               <Page />
+            </Route> */}
+            <Route exact path="/">
+              <Redirect to="/register" />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/allpublishedevents">
+              <AllPublishedEvents />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
