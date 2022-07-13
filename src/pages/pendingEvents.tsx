@@ -1,6 +1,6 @@
 import React,{ useState }from 'react';
-import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonRouterLink, IonThumbnail, IonImg, IonList, IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonListHeader, IonText, IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonButtons, IonMenuButton, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton } from '@ionic/react';
+// import ExploreContainer from '../components/ExploreContainer';
 // import './Tab3.css';
 
 const events = [
@@ -17,21 +17,18 @@ const PendingEvents: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="end" >
+            <IonMenuButton />
+          </IonButtons>
           <IonTitle>Pending Events</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Pending Events</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="All Events" />
 
         <IonList>
           {/* <IonTitle>Upcoming Events</IonTitle> */}
           <IonCardContent>
-                  Search for events that are currently pending below.
+                  Search for events that are currently pending below:
           </IonCardContent>
           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
           {events.map((event) => (
@@ -44,7 +41,7 @@ const PendingEvents: React.FC = () => {
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-                        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt=''/>
                         {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
                         <IonCardTitle>{event.name}</IonCardTitle>
                       </IonCardHeader>
@@ -52,8 +49,8 @@ const PendingEvents: React.FC = () => {
                         Keep close to Nature's heart... and break clear away, once in awhile,
                         and climb a mountain or spend a week in the woods. Wash your spirit clean.
                       </IonCardContent>
-                      <IonButton color="success">Approve Event</IonButton>
-                      <IonButton color="danger">Deny Event</IonButton>
+                      <IonButton color="success">Approve</IonButton>
+                      <IonButton color="danger">Deny</IonButton>
                     </IonCard>
                   </div>
                 </IonAccordion>

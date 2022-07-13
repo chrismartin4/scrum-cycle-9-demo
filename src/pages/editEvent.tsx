@@ -2,9 +2,9 @@ import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, I
 import { image, text } from 'ionicons/icons';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
-// import './createEvent.css';
+// import './editEvent.css';
 
-const CreateEvent: React.FC = () => {
+const EditEvent: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
 
@@ -15,7 +15,7 @@ const CreateEvent: React.FC = () => {
           <IonButtons slot="end" >
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Create Event</IonTitle>
+          <IonTitle>Edit Event</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -26,32 +26,32 @@ const CreateEvent: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <form className="ion-padding">
-          {/* <IonTitle>Create Event</IonTitle> */}
+          {/* <IonTitle>Edit Event</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Event Title</IonLabel>
-            <IonInput></IonInput>
+            <IonInput value={"Event 1"}></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Start Date</IonLabel>
             <br></br>
             <br></br>
-            <IonDatetime></IonDatetime>
+            <IonDatetime value={"2022-07-20T12:00"}></IonDatetime>
             <br></br>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">End Date</IonLabel>
             <br></br>
             <br></br>
-            <IonDatetime></IonDatetime>
+            <IonDatetime value={"2022-07-20T14:30"}></IonDatetime>
             <br></br>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Description</IonLabel>
-            <IonTextarea></IonTextarea>
+            <IonTextarea value={"Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean."}></IonTextarea>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Venue</IonLabel>
-            <IonInput></IonInput>
+            <IonInput value={"Kingston, Jamaica"}></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Flyer</IonLabel>
@@ -64,9 +64,9 @@ const CreateEvent: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Website URL</IonLabel>
-            <IonInput type="url"></IonInput>
+            <IonInput type="url" value={"example.example.com"}></IonInput>
           </IonItem>
-          <IonButton color="warning">Create Event</IonButton>
+          <IonButton color="warning">Edit Event</IonButton>
           {/* <IonButton expand="block" onclick="openMenu()">Open Menu</IonButton> */}
         </form>
       </IonContent>
@@ -74,4 +74,4 @@ const CreateEvent: React.FC = () => {
   );
 };
 
-export default CreateEvent;
+export default EditEvent;

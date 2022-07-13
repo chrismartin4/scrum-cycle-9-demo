@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, person, calendarNumberOutline, calendarClearOutline, mailOutline, mailSharp, clipboardOutline, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, clipboardSharp, pencilOutline, person, personOutline, calendarNumberOutline, calendarClearOutline, mailOutline, mailSharp, clipboardOutline, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -37,8 +37,14 @@ const appPages: AppPage[] = [
   {
     title: 'Create Event',
     url: '/createevent',
-    iosIcon: calendarNumberOutline,
-    mdIcon: calendarNumberOutline
+    iosIcon: clipboardSharp,
+    mdIcon: clipboardSharp
+  },
+  {
+    title: 'Edit Event',
+    url: '/editevent',
+    iosIcon: pencilOutline,
+    mdIcon: pencilOutline
   },
   {
     title: 'Published Events',
@@ -51,6 +57,12 @@ const appPages: AppPage[] = [
     url: '/pendingevents',
     iosIcon: calendarClearOutline,
     mdIcon: calendarClearOutline
+  },
+  {
+    title: 'Profile',
+    url: '/userprofile',
+    iosIcon: personOutline,
+    mdIcon: personOutline
   }
 ];
 

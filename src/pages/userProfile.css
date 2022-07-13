@@ -1,0 +1,61 @@
+ion-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+ion-button {
+    width: 100px;
+}
+
+.card {
+    margin: 0 auto;
+}
+
+.header {
+    height: 200px;
+}
+
+.profilepic {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.userimg {
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    bottom: calc(-1*(80px + 4px));
+    border: 8px solid #ffd534;
+}
+
+img{
+    width: 160px;
+    height: 160px;
+}
+
+.card-body {
+    padding: 30px;
+    height: calc(100vh – (200px + 56px));
+    overflow: hidden;
+}
+
+.user-meta {
+    padding-top: 40px;
+}
+
+.username {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.useremail {
+    margin: 0 auto;
+}
+
+.userrole{
+    font-size: 90%;
+}
+

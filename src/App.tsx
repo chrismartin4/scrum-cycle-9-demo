@@ -6,8 +6,10 @@ import Page from './pages/Page';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import CreateEvent from './pages/createEvent';
+import EditEvent from './pages/editEvent';
 import AllPublishedEvents from './pages/allPublishedEvents';
 import PendingEvents from './pages/pendingEvents';
+import UserProfile from './pages/userProfile';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -56,11 +58,17 @@ const App: React.FC = () => {
             <Route exact path="/createevent">
               <CreateEvent />
             </Route>
+            <Route exact path="/editevent">
+              <EditEvent />
+            </Route>
             <Route exact path="/allpublishedevents">
               <AllPublishedEvents />
             </Route>
             <Route exact path="/pendingevents">
               <PendingEvents />
+            </Route>
+            <Route exact path="/userprofile">
+              <UserProfile />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
