@@ -1,5 +1,5 @@
 import React,{ useState }from 'react';
-import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonRouterLink, IonThumbnail, IonImg, IonList, IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonListHeader } from '@ionic/react';
+import { IonContent, IonHeader, IonAccordionGroup, IonButtons, IonMenuButton, IonSearchbar, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonRouterLink, IonThumbnail, IonImg, IonList, IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonListHeader } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { useIonViewWillEnter } from '@ionic/react';
 import axios from "../api/axiostoken";
@@ -38,16 +38,19 @@ const AllPublishedEvents: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="end" >
+            <IonMenuButton />
+          </IonButtons>
           <IonTitle>Published Events</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Published Events</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="All Events" />
+        <ExploreContainer name="All Events" /> */}
 
         <IonList>
           {/* <IonTitle>Upcoming Events</IonTitle> */}
@@ -62,7 +65,7 @@ const AllPublishedEvents: React.FC = () => {
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-                        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt='' />
                         {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>

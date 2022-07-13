@@ -52,7 +52,7 @@ const Login: React.FC = () => {
             <IonTitle size="large"></IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList>
+        <form className="ion-padding">
           {/* <IonTitle>Login</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Email</IonLabel>
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
             <IonInput type="password" value={password} placeholder="Enter Password" onIonChange={e => setPassword(e.detail.value!)} clearInput></IonInput>
           </IonItem>
           <IonButton color="warning" onClick={handleLogin}>Login</IonButton>
-        </IonList>
+          </form>
 
       </IonContent>
     </IonPage>
