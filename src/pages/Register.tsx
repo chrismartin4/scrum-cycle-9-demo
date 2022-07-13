@@ -41,6 +41,10 @@ const Register: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Profile Photo</IonLabel>
+            <IonItem> 
+            {/* <input type="file" onChange={(ev) => onFileChange(ev)}></input> */}
+            <input type="file"></input>
+            </IonItem>
             <IonInput></IonInput>
           </IonItem>
           <IonItem>
