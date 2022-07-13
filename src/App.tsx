@@ -5,6 +5,7 @@ import Menu from './components/Menu';
 import Page from './pages/Page';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import CreateEvent from './pages/createEvent';
 import AllPublishedEvents from './pages/allPublishedEvents';
 import PendingEvents from './pages/pendingEvents';
 
@@ -51,6 +52,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/createevent">
+              <CreateEvent />
             </Route>
             <Route exact path="/allpublishedevents">
               <AllPublishedEvents />

@@ -25,7 +25,7 @@ const Register: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList>
+        <form className="ion-padding">
           {/* <IonTitle>Register</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Full Name</IonLabel>
@@ -33,11 +33,11 @@ const Register: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Email</IonLabel>
-            <IonInput></IonInput>
+            <IonInput type="email"></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Password</IonLabel>
-            <IonInput></IonInput>
+            <IonInput type="password"></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Profile Photo</IonLabel>
@@ -54,7 +54,7 @@ const Register: React.FC = () => {
           </IonItem>
           <IonButton color="warning">Register</IonButton>
           {/* <IonButton expand="block" onclick="openMenu()">Open Menu</IonButton> */}
-        </IonList>
+        </form>
       </IonContent>
     </IonPage>
   );

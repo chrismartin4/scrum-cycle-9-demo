@@ -35,6 +35,12 @@ const appPages: AppPage[] = [
     mdIcon: person
   },
   {
+    title: 'Create Event',
+    url: '/createevent',
+    iosIcon: calendarNumberOutline,
+    mdIcon: calendarNumberOutline
+  },
+  {
     title: 'Published Events',
     url: '/allpublishedevents',
     iosIcon: calendarNumberOutline,

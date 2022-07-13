@@ -25,18 +25,18 @@ const Login: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonList>
+        <form className="ion-padding">
           {/* <IonTitle>Login</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Email</IonLabel>
-            <IonInput></IonInput>
+            <IonInput type="email"></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Password</IonLabel>
-            <IonInput></IonInput>
+            <IonInput type="password"></IonInput>
           </IonItem>
           <IonButton color="warning">Login</IonButton>
-        </IonList>
+        </form>
 
       </IonContent>
     </IonPage>
