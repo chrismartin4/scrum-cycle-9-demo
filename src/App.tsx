@@ -6,7 +6,8 @@ import Page from './pages/Page';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AllPublishedEvents from './pages/allPublishedEvents';
-
+//import useToken from './components/useToken';
+import React, { useState } from 'react';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -30,6 +31,7 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => {
+
   return (
     <IonApp>
       <IonReactRouter>
