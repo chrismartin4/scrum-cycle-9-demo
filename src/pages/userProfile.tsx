@@ -27,7 +27,7 @@ const UserProfile: React.FC = () => {
     role: "Regular", 
     user_id: 7
   }
-//   const { name } = useParams<{ name: string; }>();
+
   const [searchText, setSearchText] = useState('');
   const [profile, setProfile] = useState(defaultprofile);
   const [iserror, setIserror] = useState<boolean>(false);
@@ -35,7 +35,7 @@ const UserProfile: React.FC = () => {
   const [message, setMessage] = useState<string>("");
   const profileRef = useRef(defaultprofile)
   
-  //const [events, setEvents] = useState<any[]>([]);
+
   const [events, setEvents] = useState(eventsList);
   useIonViewWillEnter(() => {
     console.log('Profile');
@@ -47,7 +47,6 @@ const UserProfile: React.FC = () => {
           setProfile(resp.data.profile,);
           console.log(profileRef.current)
       } catch (err) {
-          // Handle Error Here
           console.error(err);
       }
   };
@@ -72,7 +71,7 @@ setTimeout(GetUserEvents, 100);
       axios.delete("/events/"+id)
           .then(res => {
               console.log(res);     
-              //history.push("/allpublishedevents");
+              
               setMessage(res.data.msg);
               setIsSuccess(true)
               
@@ -87,7 +86,6 @@ setTimeout(GetUserEvents, 100);
       axios.put("/events/"+id)
           .then(res => {
               console.log(res);     
-              //history.push("/allpublishedevents");
               
           })
           .catch(error=>{
@@ -128,11 +126,6 @@ setTimeout(GetUserEvents, 100);
                 message={message}
                 buttons={["Dismiss"]}
             />
-        {/* <div className="ion-padding">
-        The world is your oyster.
-        <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-        </div> */}
-        
         <div className="card">
             <div className="header">
                 <div className="profilepic">
@@ -146,12 +139,9 @@ setTimeout(GetUserEvents, 100);
             <h5 className="useremail">{profile.email}</h5>
             <h6 className="userrole">Role: {profile.role} User</h6>
         </div>
-        {/* <IonButton expand="full" color="primary">http://rogerfederer.com</IonButton>
-        <IonButton expand="full" color="secondary">@RogerFederer on Twitter</IonButton>
-        <IonButton expand="full" color="secondary">View profile at ATP</IonButton> */}
         </div>
         <IonList>
-          {/* <IonTitle>Upcoming Events</IonTitle> */}
+          
           <IonCardContent>
                   Your Events:
           </IonCardContent>

@@ -42,7 +42,7 @@ const Register: React.FC = () => {
 
             //setToken(res.data.token);         
             //history.push("/allpublishedevents");
-            setMessage(res.data.msg);
+            setMessage(res.data.message);
             setIsSuccess(true)
         })
         .catch(error=>{
@@ -54,7 +54,7 @@ const Register: React.FC = () => {
         })
   };const handleDismiss = () => {
     setIsSuccess(false);
-    window.location.reload();
+  
 
   };
   return (

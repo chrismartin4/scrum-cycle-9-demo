@@ -26,6 +26,7 @@ const Login: React.FC = () => {
             console.log(res.data.token);
             sessionStorage.setItem('token', res.data.token);        
             history.push("/allpublishedevents");
+            window.location.reload();
             
             
         })
@@ -64,7 +65,7 @@ const Login: React.FC = () => {
           {/* <IonTitle>Login</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Email</IonLabel>
-            <IonInput type="email" value={email} placeholder="Enter Email" onIonChange={e => setEmail(e.detail.value!)}  clearInput></IonInput>
+            <IonInput type="email" value={email} placeholder="Enter Email" onIonChange={e => setEmail(e.detail.value!)} required clearInput></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Password</IonLabel>

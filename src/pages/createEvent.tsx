@@ -119,19 +119,17 @@ const CreateEvent: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Flyer</IonLabel>
-            {/* <input type="file" onChange={(ev) => onFileChange(ev)}></input> */}
+            
             <br></br>
             <br></br>
             <input type="file" onChange={handleFileSelect}></input>
             <br></br>
-            {/* <IonInput></IonInput> */}
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Website URL</IonLabel>
             <IonInput type="text" value={website_url} placeholder="Enter URL" onIonChange={e => setUrl(e.detail.value!)} clearInput></IonInput>
           </IonItem>
           <IonButton color="warning" type="submit">Create Event</IonButton>
-          {/* <IonButton expand="block" onclick="openMenu()">Open Menu</IonButton> */}
         </form>
       </IonContent>
     </IonPage>

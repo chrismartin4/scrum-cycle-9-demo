@@ -24,7 +24,7 @@ const PendingEvents: React.FC = () => {
             setEvents(res.data.events);
         })
         .catch(error=>{
-          console.log(error.response.data.msg);
+          console.log(error.response.data);
           setMessage(error.response.data.msg);
           setIserror(true)
         })

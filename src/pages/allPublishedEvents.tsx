@@ -24,7 +24,7 @@ const AllPublishedEvents: React.FC = () => {
             
         })
         .catch(error=>{
-           console.log("test");
+          console.log("test");
         })
     },[]);
   return (
@@ -38,15 +38,7 @@ const AllPublishedEvents: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Published Events</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="All Events" /> */}
-
         <IonList>
-          {/* <IonTitle>Upcoming Events</IonTitle> */}
           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
           {events.map((event) => (
             <IonItem>
@@ -60,12 +52,8 @@ const AllPublishedEvents: React.FC = () => {
                       <IonCardHeader>
                         <img src={'assets/uploads/'+event.flyer} className="center" alt={event.flyer}></img>
                         <br></br>
-                      {/* <img src="assets/uploads/"+{event.flyer} alt="image of event" ></img>                         */}
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>
-
-                      {/* <IonCardSubtitle>{event.desc} </IonCardSubtitle> */}
-
                       <IonCardContent>
                       {event.desc} <br></br><br></br>
                       <b>Venue:</b> {event.venue} <br></br>

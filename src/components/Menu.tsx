@@ -7,9 +7,12 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
+  IonButton,
   IonNote,
+  IonAlert
 } from '@ionic/react';
-
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, clipboardSharp, pencilOutline, person, personOutline, calendarNumberOutline, calendarClearOutline, mailOutline, mailSharp, clipboardOutline, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import './Menu.css';
@@ -69,11 +72,28 @@ const appPages: AppPage[] = [
 // const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
+  const history = useHistory();
   const location = useLocation();
+  const [iserror, setIserror] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const handleLogout = () => {
+    setMessage("User Logged out");
+    setIserror(true);
+    sessionStorage.removeItem('token');
+    history.push("/login");
+  };
 
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
+      <IonAlert
+                isOpen={iserror}
+                onDidDismiss={() => setIserror(false)}
+                cssClass="my-custom-class"
+                header={"Logout"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
         <IonList id="inbox-list">
           <IonListHeader>Events Pro</IonListHeader>
           <IonNote>Events Management System</IonNote>
@@ -88,6 +108,7 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
+        <IonButton color="warning" onClick={handleLogout}>Logout</IonButton>
 
         {/* <IonList id="labels-list">
           <IonListHeader>Labels</IonListHeader>
