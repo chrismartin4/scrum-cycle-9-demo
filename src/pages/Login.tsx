@@ -27,7 +27,7 @@ const Login: React.FC = () => {
             sessionStorage.setItem('token', res.data.token);
 
             //setToken(res.data.token);         
-            //history.push("/allpublishedevents");
+            history.push("/allpublishedevents");
             
         })
         .catch(error=>{
