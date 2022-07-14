@@ -59,14 +59,15 @@ const AllPublishedEvents: React.FC = () => {
             <IonItem>
               <IonAccordionGroup expand="inset">
                 <IonAccordion toggleIconSlot="end">
-                  <IonItem key={event.Event_id} slot="header" color="light">
+                  <IonItem key={event.id} slot="header" color="light">
                     <IonLabel>{event.title}</IonLabel>
                   </IonItem>
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
                         {/* <img src="../uploads/download_1.jpg" alt={event.title} /> */}
-                        <img src="C:\Users\user\Desktop\NCB\cycle 8\scrum-cycle-9-demo\public\assets\uploads\download_1.jpg" alt={event.title} />
+                        <img src={'assets/uploads/'+event.flyer}alt={event.flyer}></img>
+                    
                         {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>

@@ -81,7 +81,7 @@ const PendingEvents: React.FC = () => {
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-                        <img src="https://images.unsplash.com/photo-1542641728-6ca359b085f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt=''/>
+                        <img src={'assets/uploads/'+event.flyer} alt={event.flyer}/>
                         {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>
