@@ -5,13 +5,11 @@ import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonButtons, Ion
 import { useIonViewWillEnter } from '@ionic/react';
 import axios from "../api/axiostoken";
 
-const events = [
-  { id: 1, name: "Event 1" },
-  { id: 2, name: "Event 2" },
-  { id: 3, name: "Event 3" },
-  { id: 4, name: "Event 4" },
-  { id: 5, name: "Event 5" },
-]
+const eventsList = [
+  { Event_id: 10, created_at: "Thu, 30 Jun 2022 12:56:22 GMT", desc: "Annual food festival with all of Jamaica's finest culinary treats", end_date: "Sat, 25 Jun 2022 17:50:00 GMT", flyer: "party.png", start_date: "Thu, 23 Jun 2022 12:50:00 GMT", status: "Published", title: "Food & Drink Festival", uid: 7, venue:"Kingston Kitchen", website_url: "foodfes.com"},
+  { Event_id: 11, created_at: "Thu, 30 Jun 2022 12:58:32 GMT", desc: "Jamaica's first rum festival", end_date: "Wed, 15 Jun 2022 15:56:00 GMT", flyer: "hm-hero.png", start_date: "Tue, 14 Jun 2022 12:56:00 GMT", status: "Published", title: "Rum Market", uid: 7, venue:"Appleton Estate", website_url: "rummarket.com"},
+  { Event_id: 12, created_at: "Thu, 30 Jun 2022 14:25:25 GMT", desc: "A run set by BNC for charity", end_date: "Thu, 30 Jun 2022 16:24:00 GMT", flyer: "runmarathon.png", start_date: "Thu, 30 Jun 2022 14:24:00 GMT", status: "Pending", title: "BNC Run", uid: 10, venue:"Kingston", website_url: "bncrun.com"}
+] 
 
 const PendingEvents: React.FC = () => {
   const [searchText, setSearchText] = useState('');
@@ -71,7 +69,7 @@ const PendingEvents: React.FC = () => {
                   Search for events that are currently pending below:
           </IonCardContent>
           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-          {events.map((event) => (
+          {eventsList.map((event) => (
             <IonItem>
               <IonAccordionGroup expand="inset">
                 <IonAccordion toggleIconSlot="end">
@@ -81,12 +79,18 @@ const PendingEvents: React.FC = () => {
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-                        <img src={'assets/uploads/'+event.flyer} alt={event.flyer}/>
-                        {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
+                        <img src={'assets/uploads/'+event.flyer} className="center" alt={event.flyer}></img>
+                        <br></br>
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>
                       <IonCardContent>
-                      {event.desc}
+                      {event.desc} <br></br><br></br>
+                      <b>Venue:</b> {event.venue} <br></br>
+                      <b>Starts at:</b> {event.start_date} <br></br>
+                      <b>Ends at:</b> {event.end_date} <br></br>
+                      <b>Website:</b> {event.website_url} <br></br>
+                      <b>Event Status:</b> {event.status} <br></br>
+                      <b>Created at:</b> {event.created_at} by {event.uid} <br></br>
                       </IonCardContent>
                       <IonButton color="success" onClick={()=> handleApprove({event})}>Approve</IonButton>
                       <IonButton color="danger" onClick={()=> handleDeny({event})}>Deny</IonButton>
