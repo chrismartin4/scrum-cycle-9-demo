@@ -4,12 +4,12 @@ import ExploreContainer from '../components/ExploreContainer';
 import { useIonViewWillEnter } from '@ionic/react';
 // import axios from "../api/axiostoken";
 
-// import './Tab3.css';
+import './allPublishedEvents.css';
 
 const eventsList = [
-  { Event_id: 10, created_at: "Thu, 30 Jun 2022 12:56:22 GMT", desc: "Annual food festival with all of Jamaica's finest culinary treats", end_date: "Sat, 25 Jun 2022 17:50:00 GMT", flyer: "download_1.jpg", start_date: "Thu, 23 Jun 2022 12:50:00 GMT", status: "Published", title: "Food & Drink Festival", uid: 7, venue:"Kingston Kitchen", website_url: "foodfes.com"},
+  { Event_id: 10, created_at: "Thu, 30 Jun 2022 12:56:22 GMT", desc: "Annual food festival with all of Jamaica's finest culinary treats", end_date: "Sat, 25 Jun 2022 17:50:00 GMT", flyer: "party.png", start_date: "Thu, 23 Jun 2022 12:50:00 GMT", status: "Published", title: "Food & Drink Festival", uid: 7, venue:"Kingston Kitchen", website_url: "foodfes.com"},
   { Event_id: 11, created_at: "Thu, 30 Jun 2022 12:58:32 GMT", desc: "Jamaica's first rum festival", end_date: "Wed, 15 Jun 2022 15:56:00 GMT", flyer: "hm-hero.png", start_date: "Tue, 14 Jun 2022 12:56:00 GMT", status: "Published", title: "Rum Market", uid: 7, venue:"Appleton Estate", website_url: "rummarket.com"},
-  { Event_id: 12, created_at: "Thu, 30 Jun 2022 14:25:25 GMT", desc: "A run set by BNC for charity", end_date: "Thu, 30 Jun 2022 16:24:00 GMT", flyer: "download_3.jpg", start_date: "Thu, 30 Jun 2022 14:24:00 GMT", status: "Pending", title: "BNC Run", uid: 10, venue:"Kingston", website_url: "bncrun.com"}
+  { Event_id: 12, created_at: "Thu, 30 Jun 2022 14:25:25 GMT", desc: "A run set by BNC for charity", end_date: "Thu, 30 Jun 2022 16:24:00 GMT", flyer: "runmarathon.png", start_date: "Thu, 30 Jun 2022 14:24:00 GMT", status: "Pending", title: "BNC Run", uid: 10, venue:"Kingston", website_url: "bncrun.com"}
 ] 
 
 const AllPublishedEvents: React.FC = () => {
@@ -63,7 +63,8 @@ const AllPublishedEvents: React.FC = () => {
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-                      <img src="assets/uploads/download_1.jpg" alt="image of event" ></img>
+                        <img src={'assets/uploads/'+event.flyer} className="center" alt={event.flyer}></img>
+                        <br></br>
                       {/* <img src="assets/uploads/"+{event.flyer} alt="image of event" ></img>                         */}
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>
