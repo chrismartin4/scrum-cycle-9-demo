@@ -1,5 +1,5 @@
 import React,{ useState }from 'react';
-import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonButtons, IonMenuButton, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonAccordionGroup, IonSearchbar, IonButtons,IonAlert, IonMenuButton, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonButton } from '@ionic/react';
 // import ExploreContainer from '../components/ExploreContainer';
 // import './Tab3.css';
 import { useIonViewWillEnter } from '@ionic/react';
@@ -10,10 +10,12 @@ const eventsList = [
   { Event_id: 11, created_at: "Thu, 30 Jun 2022 12:58:32 GMT", desc: "Jamaica's first rum festival", end_date: "Wed, 15 Jun 2022 15:56:00 GMT", flyer: "hm-hero.png", start_date: "Tue, 14 Jun 2022 12:56:00 GMT", status: "Published", title: "Rum Market", uid: 7, venue:"Appleton Estate", website_url: "rummarket.com"},
   { Event_id: 12, created_at: "Thu, 30 Jun 2022 14:25:25 GMT", desc: "A run set by BNC for charity", end_date: "Thu, 30 Jun 2022 16:24:00 GMT", flyer: "runmarathon.png", start_date: "Thu, 30 Jun 2022 14:24:00 GMT", status: "Pending", title: "BNC Run", uid: 10, venue:"Kingston", website_url: "bncrun.com"}
 ] 
-
 const PendingEvents: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [events, setEvents] = useState<any[]>([]);
+  const [iserror, setIserror] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
   useIonViewWillEnter(() => {
     console.log('load some data from a service');
     axios.get("events/pending")
@@ -22,7 +24,9 @@ const PendingEvents: React.FC = () => {
             setEvents(res.data.events);
         })
         .catch(error=>{
-           console.log("test");
+          console.log(error.response.data.msg);
+          setMessage(error.response.data.msg);
+          setIserror(true)
         })
     },[])
     const handleApprove = (ev:any) => {
@@ -30,12 +34,15 @@ const PendingEvents: React.FC = () => {
       
       axios.patch("/events/"+id)
           .then(res => {
-              console.log(res);     
+              console.log(res.data.msg);     
               //history.push("/allpublishedevents");
-              
+              setMessage(res.data.msg);
+              setIsSuccess(true)
           })
           .catch(error=>{
-            console.log(error);  
+            console.log(error);
+          setMessage(error.response.data.msg);
+          setIserror(true);
           })
     };
     const handleDeny = (ev:any) => {
@@ -44,11 +51,19 @@ const PendingEvents: React.FC = () => {
           .then(res => {
               console.log(res);     
               //history.push("/allpublishedevents");
-              
+              setMessage(res.data.msg);
+              setIsSuccess(true)
           })
           .catch(error=>{
-            console.log(error);  
+            console.log(error.response.data.msg);
+          setMessage(error.response.data.msg);
+          setIserror(true)  
           })
+    };
+    const handleDismiss = () => {
+      setIsSuccess(false);
+      window.location.reload();
+
     };
     ;
   return (
@@ -62,14 +77,30 @@ const PendingEvents: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-
+      <IonAlert
+                isOpen={isSuccess}
+                onDidDismiss={() =>  handleDismiss() }
+                cssClass="my-custom-class"
+                header={"Success"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
+      <IonAlert
+                isOpen={iserror}
+                onDidDismiss={() => setIserror(false)
+                }
+                cssClass="my-custom-class"
+                header={"Error"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
         <IonList>
           {/* <IonTitle>Upcoming Events</IonTitle> */}
           <IonCardContent>
                   Search for events that are currently pending below:
           </IonCardContent>
           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-          {eventsList.map((event) => (
+          {events.map((event) => (
             <IonItem>
               <IonAccordionGroup expand="inset">
                 <IonAccordion toggleIconSlot="end">

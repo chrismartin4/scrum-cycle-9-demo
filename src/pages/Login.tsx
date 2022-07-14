@@ -1,4 +1,4 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonList } from '@ionic/react';
+import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar,IonAlert, IonItem, IonLabel, IonInput, IonList } from '@ionic/react';
 import { text } from 'ionicons/icons';
 import { useParams } from 'react-router';
 import axios from "../api/axios";
@@ -24,14 +24,14 @@ const Login: React.FC = () => {
         .then(res => {
             console.log(res);
             console.log(res.data.token);
-            sessionStorage.setItem('token', res.data.token);
-
-            //setToken(res.data.token);         
+            sessionStorage.setItem('token', res.data.token);        
             history.push("/allpublishedevents");
+            
             
         })
         .catch(error=>{
             setMessage("Auth failure! Please create an account");
+            setMessage(error.response.data.msg);
             setIserror(true)
         })
   };
@@ -47,6 +47,14 @@ const Login: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
+      <IonAlert
+                isOpen={iserror}
+                onDidDismiss={() => setIserror(false)}
+                cssClass="my-custom-class"
+                header={"Error!"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large"></IonTitle>
@@ -56,7 +64,7 @@ const Login: React.FC = () => {
           {/* <IonTitle>Login</IonTitle> */}
           <IonItem>
             <IonLabel position="floating">Email</IonLabel>
-            <IonInput type="email" value={email} placeholder="Enter Email" onIonChange={e => setEmail(e.detail.value!)} clearInput></IonInput>
+            <IonInput type="email" value={email} placeholder="Enter Email" onIonChange={e => setEmail(e.detail.value!)}  clearInput></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Password</IonLabel>

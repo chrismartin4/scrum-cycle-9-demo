@@ -2,7 +2,7 @@ import React,{ useState }from 'react';
 import { IonContent, IonHeader, IonAccordionGroup, IonButtons, IonCardSubtitle, IonMenuButton, IonSearchbar, IonAccordion, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonPage, IonTitle, IonToolbar, IonRouterLink, IonThumbnail, IonImg, IonList, IonItem, IonLabel, IonInput, IonToggle, IonRadio, IonCheckbox, IonItemSliding, IonItemOption, IonItemOptions, IonListHeader } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import { useIonViewWillEnter } from '@ionic/react';
-// import axios from "../api/axiostoken";
+import axios from "../api/axiostoken";
 
 import './allPublishedEvents.css';
 
@@ -15,23 +15,18 @@ const eventsList = [
 const AllPublishedEvents: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [events, setEvents] = useState<any[]>([]);
-  // useIonViewWillEnter(() => {
-  //   console.log('load some data from a service');
-  //   axios.get("/events")
-  //       .then(res => {
-  //           console.log(res.data.allev);
-  //           setEvents(res.data.allev);
-  //           //console.log(res.data.token);
-  //           //sessionStorage.setItem('token', res.data.token);
-
-  //           //setToken(res.data.token);         
-  //           //history.push("/allpublishedevents");
+  useIonViewWillEnter(() => {
+    console.log('load some data from a service');
+    axios.get("/events")
+        .then(res => {
+            console.log(res.data.allev);
+            setEvents(res.data.allev);
             
-  //       })
-  //       .catch(error=>{
-  //          console.log("test");
-  //       })
-  //   },[]);
+        })
+        .catch(error=>{
+           console.log("test");
+        })
+    },[]);
   return (
     <IonPage>
       <IonHeader>
@@ -53,7 +48,7 @@ const AllPublishedEvents: React.FC = () => {
         <IonList>
           {/* <IonTitle>Upcoming Events</IonTitle> */}
           <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-          {eventsList.map((event) => (
+          {events.map((event) => (
             <IonItem>
               <IonAccordionGroup expand="inset">
                 <IonAccordion toggleIconSlot="end">

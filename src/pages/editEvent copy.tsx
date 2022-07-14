@@ -6,8 +6,8 @@ import React, { useState }from 'react';
 import axios from "../api/axiostoken";
 // import './editEvent.css';
 
-const EditEvent: React.FC = (ev:any) => {
-  
+const handleUpdate= (ev:any) => {
+  const id=ev.event.Event_id;
   const [title, setTitle] = useState<string>();
   const [start_date, setStart_date] = useState<string>();
   const [end_date, setEnd_date] = useState<string>();
@@ -31,11 +31,9 @@ const EditEvent: React.FC = (ev:any) => {
     formData.append("end_date", end_date!);
     formData.append("website_url", website_url!);
     formData.append("desc", desc!);
-    axios.put("/events", formData)
+    axios.put("/events/"+id, formData)
         .then(res => {
             console.log(res);
-            //setToken(res.data.token);         
-            //history.push("/allpublishedevents"); 
         })
         .catch(error=>{
             //setMessage("Auth failure! Please create an account");
@@ -44,22 +42,6 @@ const EditEvent: React.FC = (ev:any) => {
         })
   };
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="end" >
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Edit Event</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <form className="ion-padding" onSubmit={handleSubmit}>
           {/* <IonTitle>Edit Event</IonTitle> */}
           <IonItem>
@@ -104,9 +86,6 @@ const EditEvent: React.FC = (ev:any) => {
           <IonButton color="warning" type="submit">Edit Event</IonButton>
           {/* <IonButton expand="block" onclick="openMenu()">Open Menu</IonButton> */}
         </form>
-      </IonContent>
-    </IonPage>
   );
 };
 
-export default EditEvent;
