@@ -57,22 +57,15 @@ const AllPublishedEvents: React.FC = () => {
             <IonItem>
               <IonAccordionGroup expand="inset">
                 <IonAccordion toggleIconSlot="end">
-                  <IonItem key={event.id} slot="header" color="light">
+                  <IonItem key={event.Event_id} slot="header" color="light">
                     <IonLabel>{event.title}</IonLabel>
                   </IonItem>
                   <div className="ion-padding" slot="content">
                     <IonCard>
                       <IonCardHeader>
-<<<<<<< HEAD
-                        {/* <img src="../uploads/download_1.jpg" alt={event.title} /> */}
-                        <img src={'assets/uploads/'+event.flyer}alt={event.flyer}></img>
-                    
-                        {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
-=======
                         <img src={'assets/uploads/'+event.flyer} className="center" alt={event.flyer}></img>
                         <br></br>
                       {/* <img src="assets/uploads/"+{event.flyer} alt="image of event" ></img>                         */}
->>>>>>> 34e38cc5a2630a09d9a2a870bebe75696f3e8232
                         <IonCardTitle>{event.title}</IonCardTitle>
                       </IonCardHeader>
 
