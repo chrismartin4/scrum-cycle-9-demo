@@ -16,7 +16,6 @@ const CreateEvent: React.FC = () => {
   const [iserror, setIserror] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  //const [file, setFile] = useState<File>("");
   const [selectedFile, setSelectedFile] = React.useState(null);
   const handleFileSelect = (event:any) => {
     console.log( event.target.files[0]);

@@ -22,6 +22,7 @@ const PendingEvents: React.FC = () => {
         .then(res => {
             console.log(res.data.events);
             setEvents(res.data.events);
+    
         })
         .catch(error=>{
           console.log(error.response.data);

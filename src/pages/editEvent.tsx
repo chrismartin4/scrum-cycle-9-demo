@@ -1,4 +1,4 @@
-import { IonButtons, IonButton, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonList, IonDatetime, IonTextarea } from '@ionic/react';
+import { IonButtons, IonButton,IonAlert, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonItem, IonLabel, IonInput, IonList, IonDatetime, IonTextarea } from '@ionic/react';
 import { image, text } from 'ionicons/icons';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
@@ -7,14 +7,17 @@ import axios from "../api/axiostoken";
 // import './editEvent.css';
 
 const EditEvent: React.FC = (ev:any) => {
-  
+  const [eid, setEid] = useState(0);
   const [title, setTitle] = useState<string>();
   const [start_date, setStart_date] = useState<string>();
   const [end_date, setEnd_date] = useState<string>();
   const [venue, setVenue] = useState<string>();
   const [desc, setDesc] = useState<string>();
   const [website_url, setUrl] = useState<string>();
-  //const [file, setFile] = useState<File>("");
+  const [iserror, setIserror] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  
   const { name } = useParams<{ name: string; }>();
   const [selectedFile, setSelectedFile] = React.useState(null);
   const handleFileSelect = (event:any) => {
@@ -31,17 +34,24 @@ const EditEvent: React.FC = (ev:any) => {
     formData.append("end_date", end_date!);
     formData.append("website_url", website_url!);
     formData.append("desc", desc!);
-    axios.put("/events", formData)
+    axios.put("/events/"+eid!, formData)
         .then(res => {
             console.log(res);
-            //setToken(res.data.token);         
-            //history.push("/allpublishedevents"); 
+            setMessage(res.data.msg);
+            setIsSuccess(true) 
         })
         .catch(error=>{
             //setMessage("Auth failure! Please create an account");
             //setIserror(true)
             console.log(error);
+            setMessage(error.response.data.msg);
+            setIserror(true)
         })
+  };
+  const handleDismiss = () => {
+    setIsSuccess(false);
+    window.location.reload();
+
   };
   return (
     <IonPage>
@@ -55,6 +65,23 @@ const EditEvent: React.FC = (ev:any) => {
       </IonHeader>
 
       <IonContent fullscreen>
+      <IonAlert
+                isOpen={isSuccess}
+                onDidDismiss={() =>  handleDismiss() }
+                cssClass="my-custom-class"
+                header={"Success"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
+      <IonAlert
+                isOpen={iserror}
+                onDidDismiss={() => setIserror(false)
+                }
+                cssClass="my-custom-class"
+                header={"Error"}
+                message={message}
+                buttons={["Dismiss"]}
+            />
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">{name}</IonTitle>
@@ -62,6 +89,10 @@ const EditEvent: React.FC = (ev:any) => {
         </IonHeader>
         <form className="ion-padding" onSubmit={handleSubmit}>
           {/* <IonTitle>Edit Event</IonTitle> */}
+          <IonItem>
+            <IonLabel position="floating">Event ID</IonLabel>
+            <IonInput type="number" value={eid} placeholder="Enter Event ID" onIonChange={e => setEid(parseInt(e.detail.value!))} clearInput></IonInput>
+          </IonItem>
           <IonItem>
             <IonLabel position="floating">Event Title</IonLabel>
             <IonInput type="text" value={title} placeholder="Enter Event Title" onIonChange={e => setTitle(e.detail.value!)} clearInput></IonInput>
@@ -99,7 +130,7 @@ const EditEvent: React.FC = (ev:any) => {
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Website URL</IonLabel>
-            <IonInput type="url" value={website_url} placeholder="Enter URL" onIonChange={e => setUrl(e.detail.value!)} clearInput></IonInput>
+            <IonInput type="text" value={website_url} placeholder="Enter URL" onIonChange={e => setUrl(e.detail.value!)} clearInput></IonInput>
           </IonItem>
           <IonButton color="warning" type="submit">Edit Event</IonButton>
           {/* <IonButton expand="block" onclick="openMenu()">Open Menu</IonButton> */}
